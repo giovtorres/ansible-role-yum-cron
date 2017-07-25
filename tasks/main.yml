@@ -1,0 +1,43 @@
+---
+- name: Install yum-cron
+  yum:
+    name: yum-cron
+    state: present
+
+- name: Copy yum-cron.conf
+  template:
+    src: yum-cron.conf.j2
+    dest: /etc/yum/yum-cron.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart yum-cron
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution_major_version|int == 7
+
+- name: Copy yum-cron.sysconfig
+  template:
+    src: yum-cron.sysconfig.j2
+    dest: /etc/sysconfig/yum-cron
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart yum-cron
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution_major_version|int == 6
+
+- name: Start yum-cron service and enable at boot time
+  service:
+    name: yum-cron
+    state: started
+    enabled: yes
+  when: yum_cron_service_enabled
+
+- name: Stop yum-cron service and disable at boot time
+  service:
+    name: yum-cron
+    state: stopped
+    enabled: no
+  when: not yum_cron_service_enabled

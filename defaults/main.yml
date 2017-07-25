@@ -1,0 +1,38 @@
+---
+yum_cron_service_enabled: True
+
+# EL7 Options
+
+yum_cron_update_cmd: "default"
+yum_cron_update_messages: "yes"
+yum_cron_download_updates: "yes"
+yum_cron_apply_updates: "yes"
+
+yum_cron_random_sleep: 360
+yum_cron_system_name: "None"
+yum_cron_emit_via: "stdio"
+yum_cron_output_width: 80
+
+yum_cron_email_from: "root@localhost"
+yum_cron_email_to: "root"
+yum_cron_email_host: "localhost"
+yum_cron_debuglevel: "-2"
+
+
+# EL6 Options
+
+yum_cron_yum_parameter: ""
+yum_cron_check_only: "no"
+yum_cron_check_first: "no"
+yum_cron_download_only: "no"
+
+yum_cron_error_level: "0"
+yum_cron_debug_level: "0"
+yum_cron_randomwait: "60"
+yum_cron_mailto: ""
+
+yum_cron_systemname: "{{ ansible_fqdn }}"
+yum_cron_days_of_week: "0123456"
+yum_cron_cleanday: "0"
+yum_cron_service_waits: "yes"
+yum_cron_service_wait_time: "300"
