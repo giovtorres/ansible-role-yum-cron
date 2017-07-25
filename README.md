@@ -1,5 +1,8 @@
 # Ansible Role: yum-cron
 
+[![Build Status](https://travis-ci.org/giovtorres/ansible-role-yum-cron.svg?branch=master)](https://travis-ci.org/giovtorres/ansible-role-yum-cron)
+[![Ansible Role](https://img.shields.io/ansible/role/19491.svg)](https://galaxy.ansible.com/giovtorres/yum-cron/)
+
 Installs and configures yum-cron which runs yum updates as a cron job.
 Supported on EL6 and 7.
 
@@ -148,7 +151,7 @@ None.
 
     - hosts: servers
       roles:
-         - ansible-role-yum-cron
+         - giovtorres.yum-cron
 
 ## License
 
