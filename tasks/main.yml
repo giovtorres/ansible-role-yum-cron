@@ -33,11 +33,13 @@
     name: yum-cron
     state: started
     enabled: yes
-  when: yum_cron_service_enabled
+  when:
+    - yum_cron_service_enabled == True
 
 - name: Stop yum-cron service and disable at boot time
   service:
     name: yum-cron
     state: stopped
     enabled: no
-  when: not yum_cron_service_enabled
+  when:
+    - yum_cron_service_enabled == False
