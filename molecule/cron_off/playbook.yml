@@ -1,0 +1,16 @@
+---
+- name: Converge
+  hosts: ansible-role-yum-cron-centos7
+  vars:
+    yum_cron_service_enabled: false
+    yum_cron_apply_updates: "no"
+  roles:
+    - role: ansible-role-yum-cron
+
+- name: Converge
+  hosts: ansible-role-yum-cron-centos6
+  vars:
+    yum_cron_service_enabled: false
+    yum_cron_download_only: "yes"
+  roles:
+    - role: ansible-role-yum-cron
