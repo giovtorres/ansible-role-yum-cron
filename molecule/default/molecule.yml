@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: ansible-role-yum-cron-centos7
+    image: centos/systemd:latest
+    privileged: true
+    command: /usr/sbin/init
+  - name: ansible-role-yum-cron-centos6
+    image: centos:6
+    privileged: true
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

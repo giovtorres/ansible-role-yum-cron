@@ -3,11 +3,9 @@ sudo: required
 language: python
 services:
   - docker
-before_install:
-  - pip install ansible
 install:
-  - pip install molecule docker testinfra>=1.6.0
+  - pip install molecule[docker] testinfra>=3.0.0
 script:
-  - molecule test
+  - molecule test --all
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
